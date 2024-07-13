@@ -1,0 +1,16 @@
+#  Source:  https://github.com/esnet/iperf
+#  Source:  https://hub.docker.com/repository/docker/bridgehead/iperf3/general
+
+name: iperf3
+services:
+  iperf3:
+    image: docker.io/bridgehead/iperf3:latest
+    container_name: iperf3
+    ports:
+      - "5201:5201"
+    restart: unless-stopped
+
+
+#  to get help:                               docker run --rm bridgehead/iperf3 --help
+#  to use as client:                          docker run --rm bridgehead/iperf3 --client --time 120 --no-delay
+#  to use as server with additional switches: docker run --rm bridgehead/iperf3 --server --format M --one-off

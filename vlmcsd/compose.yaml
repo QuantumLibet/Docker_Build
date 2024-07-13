@@ -1,0 +1,14 @@
+#  Source:  https://github.com/esnet/iperf
+#  Source:  https://hub.docker.com/repository/docker/bridgehead/vlmcsd/general
+
+name: vlmcsd
+services:
+  vlmcsd:
+    image: docker.io/bridgehead/vlmcsd:latest
+    container_name: vlmcsd
+    ports:
+      - "1688:1688/tcp"
+    restart: unless-stopped
+
+
+#  to use as client: docker run --rm bridgehead/vlmcsd /vlmcs <ip_of_vlmcsd-server>

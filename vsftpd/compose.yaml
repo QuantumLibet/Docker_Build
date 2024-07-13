@@ -1,0 +1,26 @@
+#  Source:  https://security.appspot.com/vsftpd.html
+#  Source:  https://github.com/onjin/docker-alpine-vsftpd
+
+name: vsftpd
+services:
+    vsftpd:
+      image: docker.io/bridgehead/vsftpd:latest
+      container_name: vsftpd
+      ports:
+        - "21:21"
+        - "10091-10100:10091-10100"
+      environment:
+        - TZ=Europe/Berlin
+      volumes:
+        #- ~/.config/vsftpd/config:/etc/vsftpd
+        - ~/.config/vsftpd:/home/vsftpd
+      restart: unless-stopped
+
+
+#  default passwd is 'vsftpd'
+#  change password with:  docker exec vsftpd sh -c 'echo vsftpd:NEWPASSWORD | chpasswd'
+#  if you need a random password, use:  LC_ALL=C tr -dc 'A-Za-z0-9' < /dev/urandom | head -c 8
+
+
+#  test logins with: ftp 127.0.0.1
+#  remember to manually switch to PASV mode with `pass` if you happen to use an older ftp client
